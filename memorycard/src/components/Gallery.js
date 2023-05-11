@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useState} from "react";
 import tiger from '../images/tiger.jpeg'
 import flamingo from '../images/alejandro-contreras-wTPp323zAEw-unsplash.jpg';
 import dog from '../images/alexandru-rotariu-o_QTeyGVWjQ-unsplash.jpg';
@@ -11,6 +11,9 @@ import cow from '../images/thomas-oldenburger-1SQFd9_zNW4-unsplash.jpg';
 import zebra from '../images/redcharlie-redcharlie1-jNtv6K1RFek-unsplash.jpg';
 import monkey from '../images/kelly-sikkema-r077pfFsdaU-unsplash.jpg';
 import panda from '../images/debbie-molle-6DSID8Ey9-U-unsplash.jpg';
+import Shuffle from "./shuffle";
+import Images from "./images";
+
 
 
 
@@ -26,57 +29,29 @@ export default function Gallery(){
         }
     };
 
+    const [score, setScore] = useState(0);
+
+    const incrementScore = () => {
+        setScore(score +1);
+    }
+
     return (
         <div className="images-container" style={styles.container}>
-            <Images animal={tiger}></Images>
-            <Images animal={flamingo}></Images>
-            <Images animal={dog}></Images>
-            <Images animal={deer}></Images>
-            <Images animal={jiraffe}></Images>
-            <Images animal={bird}></Images>
-            <Images animal={pugg}></Images>
-            <Images animal={lizard}></Images>
-            <Images animal={cow}></Images>
-            <Images animal={zebra}></Images>
-            <Images animal={monkey}></Images>
-            <Images animal={panda}></Images>
+            <Images animal={tiger} score={incrementScore}></Images>
+            <Images animal={flamingo} score={incrementScore}></Images>
+            <Images animal={dog} score={incrementScore}></Images>
+            <Images animal={deer} score={incrementScore}></Images>
+            <Images animal={jiraffe} score={incrementScore}></Images>
+            <Images animal={bird} score={incrementScore}></Images>
+            <Images animal={pugg} score={incrementScore}></Images>
+            <Images animal={lizard} score={incrementScore}></Images>
+            <Images animal={cow} score={incrementScore}></Images>
+            <Images animal={zebra} score={incrementScore}></Images>
+            <Images animal={monkey} score={incrementScore}></Images>
+            <Images animal={panda} score={incrementScore}></Images>
+            <div>Current Score: {score}</div>
         </div>
     );
 
 }
-
-function Images({animal}){
-    return (
-        <div className="animal-container">
-        <img src={animal} alt='tiger' style={{width: '120px', height: '120px'}}></img>
-        <Shuffle></Shuffle>
-        </div>
-        
-    );
-
-}
-
-function Shuffle(){
-    useEffect(()=>{
-
-       const animalContainer = document.querySelector('.animal-container');
-
-       animalContainer.addEventListener('click', clickedImage);
-
-       return () => {
-        animalContainer.removeEventListener('click', clickedImage);
-       };
-    },[]);
-
-    const clickedImage = () => {
-        console.log('image clicked');
-    };
-
-
-
-}
-
-
-
-
 
