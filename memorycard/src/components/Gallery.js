@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import tiger from '../images/tiger.jpeg'
 import flamingo from '../images/alejandro-contreras-wTPp323zAEw-unsplash.jpg';
 import dog from '../images/alexandru-rotariu-o_QTeyGVWjQ-unsplash.jpg';
@@ -14,10 +14,6 @@ import panda from '../images/debbie-molle-6DSID8Ey9-U-unsplash.jpg';
 import Images from "./images";
 
 
-
-
-
-
 export default function Gallery(){
     const styles = {
         container: {
@@ -28,31 +24,31 @@ export default function Gallery(){
         }
     };
 
-    const [score, setScore] = useState(0);
-    const [memory, setMemory] = useState('');
-
-    const remember = () => {
-        
+    const [counter, setCounter] = useState(0);
+    const [memory, setMemory] = useState([]);
 
 
-        setScore(score +1);
-    }
+    const clickedImage = (e) => {
+        console.log(e.target.alt);
+        setCounter(counter + 1);
+
+    };
 
     return (
         <div className="images-container" style={styles.container}>
-            <Images animal={tiger} score={remember}></Images>
-            <Images animal={flamingo} score={remember}></Images>
-            <Images animal={dog} score={remember}></Images>
-            <Images animal={deer} score={remember}></Images>
-            <Images animal={jiraffe} score={remember}></Images>
-            <Images animal={bird} score={remember}></Images>
-            <Images animal={pugg} score={remember}></Images>
-            <Images animal={lizard} score={remember}></Images>
-            <Images animal={cow} score={remember}></Images>
-            <Images animal={zebra} score={remember}></Images>
-            <Images animal={monkey} score={remember}></Images>
-            <Images animal={panda} score={remember}></Images>
-            <div>Current Score: {score}</div>
+            <Images animal={tiger} score={clickedImage}></Images>
+            <Images animal={flamingo} score={clickedImage}></Images>
+            <Images animal={dog} score={clickedImage}></Images>
+            <Images animal={deer} score={clickedImage}></Images>
+            <Images animal={jiraffe} score={clickedImage}></Images>
+            <Images animal={bird} score={clickedImage}></Images>
+            <Images animal={pugg} score={clickedImage}></Images>
+            <Images animal={lizard} score={clickedImage}></Images>
+            <Images animal={cow} score={clickedImage}></Images>
+            <Images animal={zebra} score={clickedImage}></Images>
+            <Images animal={monkey} score={clickedImage}></Images>
+            <Images animal={panda} score={clickedImage}></Images>
+            <div>Current Score: {counter}</div>
         </div>
     );
 
