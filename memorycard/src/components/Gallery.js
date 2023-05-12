@@ -11,7 +11,6 @@ import cow from '../images/thomas-oldenburger-1SQFd9_zNW4-unsplash.jpg';
 import zebra from '../images/redcharlie-redcharlie1-jNtv6K1RFek-unsplash.jpg';
 import monkey from '../images/kelly-sikkema-r077pfFsdaU-unsplash.jpg';
 import panda from '../images/debbie-molle-6DSID8Ey9-U-unsplash.jpg';
-import Shuffle from "./shuffle";
 import Images from "./images";
 
 
@@ -30,25 +29,29 @@ export default function Gallery(){
     };
 
     const [score, setScore] = useState(0);
+    const [memory, setMemory] = useState('');
 
-    const incrementScore = () => {
+    const remember = () => {
+        
+
+
         setScore(score +1);
     }
 
     return (
         <div className="images-container" style={styles.container}>
-            <Images animal={tiger} score={incrementScore}></Images>
-            <Images animal={flamingo} score={incrementScore}></Images>
-            <Images animal={dog} score={incrementScore}></Images>
-            <Images animal={deer} score={incrementScore}></Images>
-            <Images animal={jiraffe} score={incrementScore}></Images>
-            <Images animal={bird} score={incrementScore}></Images>
-            <Images animal={pugg} score={incrementScore}></Images>
-            <Images animal={lizard} score={incrementScore}></Images>
-            <Images animal={cow} score={incrementScore}></Images>
-            <Images animal={zebra} score={incrementScore}></Images>
-            <Images animal={monkey} score={incrementScore}></Images>
-            <Images animal={panda} score={incrementScore}></Images>
+            <Images animal={tiger} score={remember}></Images>
+            <Images animal={flamingo} score={remember}></Images>
+            <Images animal={dog} score={remember}></Images>
+            <Images animal={deer} score={remember}></Images>
+            <Images animal={jiraffe} score={remember}></Images>
+            <Images animal={bird} score={remember}></Images>
+            <Images animal={pugg} score={remember}></Images>
+            <Images animal={lizard} score={remember}></Images>
+            <Images animal={cow} score={remember}></Images>
+            <Images animal={zebra} score={remember}></Images>
+            <Images animal={monkey} score={remember}></Images>
+            <Images animal={panda} score={remember}></Images>
             <div>Current Score: {score}</div>
         </div>
     );

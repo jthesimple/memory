@@ -19,7 +19,7 @@ export default function Shuffle(){
 
     const clickedImage = (e) => {
         console.log(e.target.alt);
-        
+
     };
 }
 
