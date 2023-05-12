@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import tiger from '../images/tiger.jpeg'
 import flamingo from '../images/alejandro-contreras-wTPp323zAEw-unsplash.jpg';
 import dog from '../images/alexandru-rotariu-o_QTeyGVWjQ-unsplash.jpg';
@@ -24,15 +24,21 @@ export default function Gallery(){
         }
     };
 
+    
     const [counter, setCounter] = useState(0);
     const [memory, setMemory] = useState([]);
 
+    
 
     const clickedImage = (e) => {
-        console.log(e.target.alt);
+        const identifier = e.target.alt
+        setMemory(prevMemory => [...prevMemory, identifier]);
+        console.log(memory);
         setCounter(counter + 1);
+    
+       
 
-    };
+    }
 
     return (
         <div className="images-container" style={styles.container}>
