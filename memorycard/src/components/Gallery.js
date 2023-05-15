@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import tiger from '../images/tiger.jpeg'
 import flamingo from '../images/alejandro-contreras-wTPp323zAEw-unsplash.jpg';
 import dog from '../images/alexandru-rotariu-o_QTeyGVWjQ-unsplash.jpg';
@@ -24,7 +24,21 @@ export default function Gallery(){
         }
     };
 
-    
+    const [animalArray, setAnimalArray] = useState([tiger,
+                        flamingo,
+                        dog,
+                        deer,
+                        jiraffe,
+                        bird,
+                        pugg,
+                        lizard,
+                        cow,
+                        zebra,
+                        monkey,
+                        panda
+    ]);
+
+
     const [counter, setCounter] = useState(0);
     const [memory, setMemory] = useState([]);
     const [highScore, setHighScore] = useState(0);
@@ -47,20 +61,34 @@ export default function Gallery(){
         };
     }
 
+    const shuffleArray = (array) =>{
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+    };
+
+    useEffect(() => {
+        setAnimalArray(animalArray => shuffleArray(animalArray));
+    },[counter]);
+
+    
+
     return (
         <div className="images-container" style={styles.container}>
-            <Images animal={tiger} score={gameLogic}></Images>
-            <Images animal={flamingo} score={gameLogic}></Images>
-            <Images animal={dog} score={gameLogic}></Images>
-            <Images animal={deer} score={gameLogic}></Images>
-            <Images animal={jiraffe} score={gameLogic}></Images>
-            <Images animal={bird} score={gameLogic}></Images>
-            <Images animal={pugg} score={gameLogic}></Images>
-            <Images animal={lizard} score={gameLogic}></Images>
-            <Images animal={cow} score={gameLogic}></Images>
-            <Images animal={zebra} score={gameLogic}></Images>
-            <Images animal={monkey} score={gameLogic}></Images>
-            <Images animal={panda} score={gameLogic}></Images>
+            <Images animal={animalArray[0]} score={gameLogic}></Images>
+            <Images animal={animalArray[1]} score={gameLogic}></Images>
+            <Images animal={animalArray[2]} score={gameLogic}></Images>
+            <Images animal={animalArray[3]} score={gameLogic}></Images>
+            <Images animal={animalArray[4]} score={gameLogic}></Images>
+            <Images animal={animalArray[5]} score={gameLogic}></Images>
+            <Images animal={animalArray[6]} score={gameLogic}></Images>
+            <Images animal={animalArray[7]} score={gameLogic}></Images>
+            <Images animal={animalArray[8]} score={gameLogic}></Images>
+            <Images animal={animalArray[9]} score={gameLogic}></Images>
+            <Images animal={animalArray[10]} score={gameLogic}></Images>
+            <Images animal={animalArray[11]} score={gameLogic}></Images>
             <div>Current Score: {counter}</div>
             <div>High Score: {highScore}</div>
         </div>
