@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, {useState} from "react";
 import tiger from '../images/tiger.jpeg'
 import flamingo from '../images/alejandro-contreras-wTPp323zAEw-unsplash.jpg';
 import dog from '../images/alexandru-rotariu-o_QTeyGVWjQ-unsplash.jpg';
@@ -27,34 +27,42 @@ export default function Gallery(){
     
     const [counter, setCounter] = useState(0);
     const [memory, setMemory] = useState([]);
+    const [highScore, setHighScore] = useState(0);
 
-    
-
-    const clickedImage = (e) => {
+    const gameLogic = (e) => {
         const identifier = e.target.alt
-        setMemory(prevMemory => [...prevMemory, identifier]);
-        console.log(memory);
-        setCounter(counter + 1);
-    
-       
-
+        if (memory.includes(identifier)===false){
+            setMemory(memory => [...memory, identifier]);
+            setCounter(counter + 1);
+        } else if (memory.includes(identifier)=== true){
+            console.log('Game Over');
+            if (counter > highScore){
+                setHighScore(highScore => counter);
+                setCounter(0);
+                setMemory(memory => []);
+            } else if (counter < highScore){
+                setCounter(0);
+                setMemory(memory => []);
+            };   
+        };
     }
 
     return (
         <div className="images-container" style={styles.container}>
-            <Images animal={tiger} score={clickedImage}></Images>
-            <Images animal={flamingo} score={clickedImage}></Images>
-            <Images animal={dog} score={clickedImage}></Images>
-            <Images animal={deer} score={clickedImage}></Images>
-            <Images animal={jiraffe} score={clickedImage}></Images>
-            <Images animal={bird} score={clickedImage}></Images>
-            <Images animal={pugg} score={clickedImage}></Images>
-            <Images animal={lizard} score={clickedImage}></Images>
-            <Images animal={cow} score={clickedImage}></Images>
-            <Images animal={zebra} score={clickedImage}></Images>
-            <Images animal={monkey} score={clickedImage}></Images>
-            <Images animal={panda} score={clickedImage}></Images>
+            <Images animal={tiger} score={gameLogic}></Images>
+            <Images animal={flamingo} score={gameLogic}></Images>
+            <Images animal={dog} score={gameLogic}></Images>
+            <Images animal={deer} score={gameLogic}></Images>
+            <Images animal={jiraffe} score={gameLogic}></Images>
+            <Images animal={bird} score={gameLogic}></Images>
+            <Images animal={pugg} score={gameLogic}></Images>
+            <Images animal={lizard} score={gameLogic}></Images>
+            <Images animal={cow} score={gameLogic}></Images>
+            <Images animal={zebra} score={gameLogic}></Images>
+            <Images animal={monkey} score={gameLogic}></Images>
+            <Images animal={panda} score={gameLogic}></Images>
             <div>Current Score: {counter}</div>
+            <div>High Score: {highScore}</div>
         </div>
     );
 
